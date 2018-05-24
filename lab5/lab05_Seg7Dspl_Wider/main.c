@@ -44,7 +44,7 @@ int main(void)
     while(1)
     {
         //set the displays back off
-        GPIO_setOutputLowOnPin(GPIO_PORT_P4, 0xFF);
+        GPIO_setOutputHighOnPin(GPIO_PORT_P4, 0x7F);
 
         //set the displays on based on case
         displayNumberz(seq);
@@ -68,55 +68,53 @@ void displayNumberz(char num)
     switch (num)
     {
         case 0x00:
-            GPIO_setOutputHighOnPin(GPIO_PORT_P4,0x3F);
-            printf("0\n");
-            return;
+            GPIO_setOutputLowOnPin(GPIO_PORT_P4,0x3F);
+            break;
         case 0x01:
-            GPIO_setOutputHighOnPin(GPIO_PORT_P4,0x06);
-            return;
+            GPIO_setOutputLowOnPin(GPIO_PORT_P4,0x06);
+            break;
         case 0x02:
-            GPIO_setOutputHighOnPin(GPIO_PORT_P4,0x5B);
-            return;
+            GPIO_setOutputLowOnPin(GPIO_PORT_P4,0x5B);
+            break;
         case 0x03:
-            GPIO_setOutputHighOnPin(GPIO_PORT_P4,0x4F);
-            return;
+            GPIO_setOutputLowOnPin(GPIO_PORT_P4,0x4F);
+            break;
         case 0x04:
-            GPIO_setOutputHighOnPin(GPIO_PORT_P4,0x66);
-            return;
+            GPIO_setOutputLowOnPin(GPIO_PORT_P4,0x66);
+            break;
         case 0x05:
-            GPIO_setOutputHighOnPin(GPIO_PORT_P4,0x6D);
-            return;
+            GPIO_setOutputLowOnPin(GPIO_PORT_P4,0x6D);
+            break;
         case 0x06:
-            GPIO_setOutputHighOnPin(GPIO_PORT_P4,0x7D);
-            return;
+            GPIO_setOutputLowOnPin(GPIO_PORT_P4,0x7D);
+            break;
         case 0x07:
-            GPIO_setOutputHighOnPin(GPIO_PORT_P4,0x07);
-            return;
+            GPIO_setOutputLowOnPin(GPIO_PORT_P4,0x07);
+            break;
         case 0x08:
-            GPIO_setOutputHighOnPin(GPIO_PORT_P4,0x7F);
-            return;
+            GPIO_setOutputLowOnPin(GPIO_PORT_P4,0x7F);
+            break;
         case 0x09:
-            GPIO_setOutputHighOnPin(GPIO_PORT_P4,0x67);
-            return;
+            GPIO_setOutputLowOnPin(GPIO_PORT_P4,0x67);
+            break;
         case 0x0A:
-            GPIO_setOutputHighOnPin(GPIO_PORT_P4,0x77);
-            return;
+            GPIO_setOutputLowOnPin(GPIO_PORT_P4,0x77);
+            break;
         case 0x0B:
-            GPIO_setOutputHighOnPin(GPIO_PORT_P4,0x7C);
-            return;
+            GPIO_setOutputLowOnPin(GPIO_PORT_P4,0x7C);
+            break;
         case 0x0C:
-            GPIO_setOutputHighOnPin(GPIO_PORT_P4,0x39);
-            return;
+            GPIO_setOutputLowOnPin(GPIO_PORT_P4,0x39);
+            break;
         case 0x0D:
-            GPIO_setOutputHighOnPin(GPIO_PORT_P4,0x5E);
-            return;
+            GPIO_setOutputLowOnPin(GPIO_PORT_P4,0x5E);
+            break;
         case 0x0E:
-            GPIO_setOutputHighOnPin(GPIO_PORT_P4,0x79);
-            return;
+            GPIO_setOutputLowOnPin(GPIO_PORT_P4,0x79);
+            break;
         case 0x0F:
-            GPIO_setOutputHighOnPin(GPIO_PORT_P4,0x71);
-            return;
-        default:
-            return;
+            GPIO_setOutputLowOnPin(GPIO_PORT_P4,0x71);
+            break;
     }
+    printf("%x\n",num);
 }
