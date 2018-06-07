@@ -13,7 +13,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-#define TEMP_THRESHOLD_LOW 0x0100//the low tempature for the temp sensor
+#define TEMP_THRESHOLD_LOW 0x0A00//the low tempature for the temp sensor
 #define TEMP_THRESHOLD_HIGH 0x0FFF//the high tempature for the temp sensor
 #define MODE_TOO_COLD 0
 #define MODE_TOO_HOT 1
@@ -72,6 +72,7 @@ int main(void)
     //GPIO_setAsOutputPin(GPIO_PORT_P4,GPIO_PIN2);
     //tmep use default led as output
     GPIO_setAsOutputPin(GPIO_PORT_P1, GPIO_PIN0);
+    GPIO_setAsOutputPin(GPIO_PORT_P4, GPIO_PIN2);
 
     //get the initial value for logick set before the loop
     //if it's below the low threshold, set mode to 0
@@ -82,16 +83,19 @@ int main(void)
     {
         printf("value below low, turn on heater\n");
         GPIO_setOutputHighOnPin(GPIO_PORT_P1, GPIO_PIN0);
+        GPIO_setOutputHighOnPin(GPIO_PORT_P4, GPIO_PIN2);
     }
     else if ((curADCResult > TEMP_THRESHOLD_LOW) && (curADCResult < TEMP_THRESHOLD_HIGH))
     {
         printf("value in middle, turn on heater\n");
         GPIO_setOutputHighOnPin(GPIO_PORT_P1, GPIO_PIN0);
+        GPIO_setOutputHighOnPin(GPIO_PORT_P4, GPIO_PIN2);
     }
     else if (curADCResult > TEMP_THRESHOLD_HIGH)
     {
         printf("value above high, turn off heater");
         GPIO_setOutputLowOnPin(GPIO_PORT_P1, GPIO_PIN0);
+        GPIO_setOutputLowOnPin(GPIO_PORT_P4, GPIO_PIN2);
     }
     else
     {
@@ -107,6 +111,7 @@ int main(void)
             mode = MODE_TOO_COLD;
             //toggle pin on
             GPIO_setOutputHighOnPin(GPIO_PORT_P1, GPIO_PIN0);
+            GPIO_setOutputHighOnPin(GPIO_PORT_P4, GPIO_PIN2);
         }
         else if (curADCResult > TEMP_THRESHOLD_HIGH && mode == MODE_TOO_COLD)
         {
@@ -114,6 +119,7 @@ int main(void)
             mode = MODE_TOO_HOT;
             //toggle pin off
             GPIO_setOutputLowOnPin(GPIO_PORT_P1, GPIO_PIN0);
+            GPIO_setOutputLowOnPin(GPIO_PORT_P4, GPIO_PIN2);
         }
         //delay so it's not running 24/7
         for(i = 0; i < DELAY; i++);

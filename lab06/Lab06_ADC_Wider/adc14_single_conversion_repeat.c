@@ -2,7 +2,7 @@
 //Willard Wider
 //5/29/18
 //ELEC 3800
-//Lab 6?
+//Lab 6
 //////////////////////
 //P5.5 is analog input
 /* DriverLib Includes */
