@@ -75,6 +75,7 @@ void PORT1_IRQHandler(void)
         //on button press
         //switch statement to specify which one to move to
         //rather than having a motor_state variable, use the direct pwm frequency itself
+        printf("Inturrupt\n");
         switch(pwmConfig.dutyCycle)
         {
             case FAST_CCW:
